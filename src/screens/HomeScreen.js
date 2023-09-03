@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View className="flex-1 justify-center items-center">
+      <Text >HomeScreen</Text>
     </View>
   )
 }
