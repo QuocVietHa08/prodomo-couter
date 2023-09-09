@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-red-main {
+  background-color: #FF4C4C;
+}
