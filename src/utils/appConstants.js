@@ -1,0 +1,7 @@
+const AppTheme = {
+
+}
+
+export {
+  AppTheme
+}

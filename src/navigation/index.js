@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import Login from "../screens/Login";
 import Setting from "../screens/Setting";
+import Welcome from "../screens/Welcome";
+import TimeEnd from "../screens/TimeEnd";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -12,45 +14,29 @@ import {
 import { BeakerIcon } from '@heroicons/react/solid'
 import { Text, TouchableOpacity, View } from "react-native";
 import HeaderIcon from "../components/layout/HeaderIcon";
+import RouteName from "./RouteName";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-
-// const CustomDrawerContent = (props) => {
-//   return (
-//     <DrawerContentScrollView {...props}>
-//       <DrawerItemList {...props} />
-//       <DrawerItem
-//         label="Close drawer"
-//         onPress={() => props.navigation.closeDrawer()}
-//       />
-//       <DrawerItem
-//         label="Toggle drawer"
-//         onPress={() => props.navigation.toggleDrawer()}
-//       />
-//     </DrawerContentScrollView>
-//   );
-// };
 
 export default function Navigation() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Home"
-        screenOptions={({ navigation }) => ({
-          headerLeft: (props) => <HeaderIcon onPress={navigation.toggleDrawer} /> 
+        initialRouteName={RouteName.Welcome}
+        screenOptions={({ route, navigation }) => ({
+          headerLeft: (props) => <HeaderIcon onPress={navigation.toggleDrawer} />,  
+          headerShown: route.name === RouteName.Welcome ? false : true
         })}
-        // useLegacyImplementation
-        // drawerContent={(props) => <CustomDrawerContent {...props} />}
       >
-        <Drawer.Screen name="Home" component={HomeScreen} options={{
-          title: 'Home',
+        <Drawer.Screen name={RouteName.Home} component={HomeScreen} options={{
           headerStyle: {
             backgroundColor: '#FFF2F2'
           }
         }}/>
-        {/* <Drawer.Screen name="Login" component={Login} /> */}
-        <Drawer.Screen name="Setting" component={Setting} />
+        <Drawer.Screen name={RouteName.Welcome} component={Welcome} />
+        <Drawer.Screen name={RouteName.Setting} component={Setting} />
+        <Drawer.Screen name={RouteName.TimeEnd} component={TimeEnd} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
