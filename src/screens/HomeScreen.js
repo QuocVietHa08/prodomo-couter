@@ -17,13 +17,18 @@ import {
 import moment from "moment";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FocusSettingModal from "../components/home/FocusSettingModal";
+import { useNavigation } from "@react-navigation/native";
+import RouteName from "../navigation/RouteName";
+import ButtonStart from "../components/home/ButtonStart";
 // import Modal from 'react-native-modal';
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
   const [timer, setTimer] = useState(25 * 60);
   const [isStart, setIsStart] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [trigger, setTrigger] = useState(0);
+  const [timePurpose, setTimePurpose] = useState('Work');
 
   const onStart = () => {
     setIsStart((prev) => !prev);
@@ -34,6 +39,11 @@ export default function HomeScreen() {
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
+
+  const handleOnCompleteScope = () => {
+    setIsStart(false);
+    navigation.navigate(RouteName.TimeEnd)
+  }
 
   return (
     <View className="flex-1 bg-[#FFF2F2] flex-direction-column justify-evenly gap-30 items-center">
@@ -46,9 +56,7 @@ export default function HomeScreen() {
           size="250"
           colors={"#471515"}
           colorsTime={[7, 5, 2, 0]}
-          onComplete={() => {
-            setIsStart(false);
-          }}
+          onComplete={handleOnCompleteScope}
         >
           {({ remainingTime }) => (
             <TouchableOpacity onPress={() => setIsOpenModal(true)}>
@@ -59,17 +67,14 @@ export default function HomeScreen() {
           )}
         </CountdownCircleTimer>
       </View>
-
-      <Pressable
-        onPress={onStart}
-        className="bg-[#FF4C4C] py-2 w-40 flex items-center justify-center rounded"
-        color="black"
-      >
-        <Text className="text-[#471515] font-bold text-2xl">
-          {isStart ? "Pause" : "Start"}
-        </Text>
-      </Pressable>
-
+      <TouchableOpacity className="bg-white/40 px-3 py-1 rounded-3xl flex-row items-center gap-x-1.5 border" onPress={() => setIsOpenModal(true)}>
+        <View className="w-2 h-2 rounded-full bg-orange-400"></View>
+        <Text >{timePurpose}</Text>
+      </TouchableOpacity>
+      {
+        !isStart && <ButtonStart onPress={() => console.log("hello")} />
+      }
+     
       <FocusSettingModal
         setTimer={setTimer}
         setIsStart={setIsStart}
@@ -77,6 +82,8 @@ export default function HomeScreen() {
         visible={isOpenModal}
         onClose={() => setIsOpenModal(false)}
         timer={timer}
+        setTimePurpose={setTimePurpose}
+        timePurpose={timePurpose}
       />
     </View>
   );

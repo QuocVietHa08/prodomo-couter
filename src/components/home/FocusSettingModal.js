@@ -1,4 +1,11 @@
-import { View, Text, Modal, TouchableOpacity, SectionList, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Modal,
+  TouchableOpacity,
+  SectionList,
+  Pressable,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -91,14 +98,20 @@ export default function FocusSettingModal({
   timer,
   setTimer,
   setTrigger,
+  setTimePurpose = { setTimePurpose },
+  timePurpose,
 }) {
+  const handleOnSetTimePurpose = (purpose) => {
+    setTimePurpose(purpose);
+    onClose();
+  };
+
   return (
     <Modal animationType="slide" transparent={true} visible={visible}>
       <View
         style={{
           height: "70%",
           marginTop: "auto",
-          backgroundColor: "blue",
         }}
       >
         <View className="flex-1 bg-white bottom-0 left-0 right-0 z-[10]">
@@ -140,7 +153,7 @@ export default function FocusSettingModal({
           </SafeAreaView>
           <View className="px-5 flex flex-row justify-between mt-3">
             <Text className="text-black text-base">
-              Choose your time purpost
+              Choose your time purpose
             </Text>
           </View>
           <SafeAreaView className="mt-4">
@@ -148,14 +161,20 @@ export default function FocusSettingModal({
               horizontal
               contentContainerStyle={{ paddingHorizontal: 10 }}
               stickySectionHeadersEnabled={false}
+              showsHorizontalScrollIndicator={false}
               sections={TIME_PURPOSE}
               renderItem={({ item, section }) => {
+                const isActive = item.text === timePurpose;
                 return (
-                    <Pressable className="bg-gray-100 mx-2 rounded">
-                      <Text className="px-2 py-1">
-                      {item.text}
-                      </Text>
-                    </Pressable>
+                  <TouchableOpacity
+                    key={item.key}
+                    onPress={() => handleOnSetTimePurpose(item.text)}
+                    className={`${
+                      isActive ? "bg-[#FFF2F2]" : "bg-gray-100"
+                    } mx-2 rounded`}
+                  >
+                    <Text className="px-2 py-1">{item.text}</Text>
+                  </TouchableOpacity>
                 );
               }}
             />
