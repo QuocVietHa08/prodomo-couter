@@ -20,6 +20,7 @@ import FocusSettingModal from "../components/home/FocusSettingModal";
 import { useNavigation } from "@react-navigation/native";
 import RouteName from "../navigation/RouteName";
 import ButtonStart from "../components/home/ButtonStart";
+import ButttonCancel from "../components/home/ButttonCancel";
 // import Modal from 'react-native-modal';
 
 export default function HomeScreen() {
@@ -43,6 +44,17 @@ export default function HomeScreen() {
   const handleOnCompleteScope = () => {
     setIsStart(false);
     navigation.navigate(RouteName.TimeEnd)
+  }
+
+  const handleStartScope = () => {
+    setIsStart(true);
+  }
+
+  const handleCancelScope = () => {
+    console.log("hello")
+    setIsStart(false);
+    setTimer(25 * 60);
+    setTrigger((prev) => prev +1)
   }
 
   return (
@@ -72,9 +84,8 @@ export default function HomeScreen() {
         <Text >{timePurpose}</Text>
       </TouchableOpacity>
       {
-        !isStart && <ButtonStart onPress={() => console.log("hello")} />
+        !isStart ? <ButtonStart onPress={handleStartScope} /> : <ButttonCancel onPress={handleCancelScope} />
       }
-     
       <FocusSettingModal
         setTimer={setTimer}
         setIsStart={setIsStart}

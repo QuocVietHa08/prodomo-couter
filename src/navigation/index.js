@@ -5,6 +5,7 @@ import Login from "../screens/Login";
 import Setting from "../screens/Setting";
 import Welcome from "../screens/Welcome";
 import TimeEnd from "../screens/TimeEnd";
+import TimeStart from "../screens/TimeStart";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -24,9 +25,15 @@ export default function Navigation() {
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName={RouteName.Welcome}
-        screenOptions={({ route, navigation }) => ({
+        screenOptions={({ route, navigation }) => ({ 
+          drawerStyle: {
+            backgroundColor: '#FFF2F2'
+          },
+          drawerLabelStyle: {
+            color: '#471515'
+          },
           headerLeft: (props) => <HeaderIcon onPress={navigation.toggleDrawer} />,  
-          headerShown: route.name === RouteName.Welcome ? false : true
+          headerShown: route.name === RouteName.Welcome ? false : true,
         })}
       >
         <Drawer.Screen name={RouteName.Home} component={HomeScreen} options={{
@@ -36,7 +43,8 @@ export default function Navigation() {
         }}/>
         <Drawer.Screen name={RouteName.Welcome} component={Welcome} />
         <Drawer.Screen name={RouteName.Setting} component={Setting} />
-        <Drawer.Screen name={RouteName.TimeEnd} component={TimeEnd} />
+        <Drawer.Screen name={RouteName.TimeEnd} component={TimeEnd} /> 
+        <Drawer.Screen name={RouteName.TimeStart} component={TimeStart} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
