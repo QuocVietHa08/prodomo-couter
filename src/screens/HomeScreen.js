@@ -21,10 +21,13 @@ import { useNavigation } from "@react-navigation/native";
 import RouteName from "../navigation/RouteName";
 import ButtonStart from "../components/home/ButtonStart";
 import ButttonCancel from "../components/home/ButttonCancel";
+import { useDispatch } from "react-redux"; 
+import { setTimeCountDown, setStartCountDown, setTimePurpose } from '../redux/home/homeReducer';
 // import Modal from 'react-native-modal';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [timer, setTimer] = useState(25 * 60);
   const [isStart, setIsStart] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -47,7 +50,10 @@ export default function HomeScreen() {
   }
 
   const handleStartScope = () => {
-    setIsStart(true);
+    dispatch(setStartCountDown())
+    dispatch(setTimeCountDown(timer))
+    setTimePurpose(timePurpose)
+    navigation.navigate(RouteName.TimeStart)
   }
 
   const handleCancelScope = () => {
