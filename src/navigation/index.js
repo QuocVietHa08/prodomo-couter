@@ -44,7 +44,9 @@ export default function Navigation() {
         <Drawer.Screen name={RouteName.Welcome} component={Welcome} />
         <Drawer.Screen name={RouteName.Setting} component={Setting} />
         <Drawer.Screen name={RouteName.TimeEnd} component={TimeEnd} /> 
-        <Drawer.Screen name={RouteName.TimeStart} component={TimeStart} />
+        <Drawer.Screen name={RouteName.TimeStart} component={TimeStart} options={{
+          headerShown: false
+        }} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

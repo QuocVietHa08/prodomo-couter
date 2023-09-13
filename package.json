@@ -13,6 +13,7 @@
     "@react-navigation/drawer": "^6.6.3",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
+    "@reduxjs/toolkit": "^1.9.5",
     "expo": "~49.0.8",
     "expo-status-bar": "~1.6.0",
     "moment": "^2.29.4",
@@ -29,6 +30,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-svg": "13.9.0",
     "react-native-wheel-scrollview-picker": "^2.0.4",
+    "react-redux": "^8.1.2",
+    "redux": "^4.2.1",
     "twrnc": "^3.6.4"
   },
   "devDependencies": {
