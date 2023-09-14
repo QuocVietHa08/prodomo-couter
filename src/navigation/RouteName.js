@@ -4,4 +4,5 @@ export default {
   Setting: 'Setting',
   TimeEnd: 'TimeEnd',
   TimeStart: 'TimeStart',
+  AppDrawer: 'AppDrawer',
 }
