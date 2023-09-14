@@ -1,5 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import Login from "../screens/Login";
 import Setting from "../screens/Setting";
@@ -12,42 +15,31 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { BeakerIcon } from '@heroicons/react/solid'
+import { BeakerIcon } from "@heroicons/react/solid";
 import { Text, TouchableOpacity, View } from "react-native";
 import HeaderIcon from "../components/layout/HeaderIcon";
 import RouteName from "./RouteName";
+import {
+  getCurrentRoute,
+  navigationRef,
+  routeNameRef,
+} from "./NavigationServices";
+import AppNavigator from "./stack/AppNavigator";
+// import Root from "./DrawerNavigation";
 
-const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function Navigation() {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator
         initialRouteName={RouteName.Welcome}
-        screenOptions={({ route, navigation }) => ({ 
-          drawerStyle: {
-            backgroundColor: '#FFF2F2'
-          },
-          drawerLabelStyle: {
-            color: '#471515'
-          },
-          headerLeft: (props) => <HeaderIcon onPress={navigation.toggleDrawer} />,  
-          headerShown: route.name === RouteName.Welcome ? false : true,
-        })}
+        screenOptions={{
+          headerShown: false,
+        }}
       >
-        <Drawer.Screen name={RouteName.Home} component={HomeScreen} options={{
-          headerStyle: {
-            backgroundColor: '#FFF2F2'
-          }
-        }}/>
-        <Drawer.Screen name={RouteName.Welcome} component={Welcome} />
-        <Drawer.Screen name={RouteName.Setting} component={Setting} />
-        <Drawer.Screen name={RouteName.TimeEnd} component={TimeEnd} /> 
-        <Drawer.Screen name={RouteName.TimeStart} component={TimeStart} options={{
-          headerShown: false
-        }} />
-      </Drawer.Navigator>
+        {AppNavigator()}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
