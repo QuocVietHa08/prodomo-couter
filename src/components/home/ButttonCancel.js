@@ -16,6 +16,8 @@ export default function ButttonCancel({ onPress }) {
 
   const handleCancel = () => {
     onPress();
+    setCountDown(10)
+    setIsOpen(false);
   };
 
   return (
@@ -31,7 +33,7 @@ export default function ButttonCancel({ onPress }) {
           Give up {countDown > 0 && `(${countDown})`}
         </Text>
       </Pressable>
-
+      
       <ModalCancel
         open={isOpen}
         onClose={() => setIsOpen(false)}

@@ -1,6 +1,7 @@
 import RouteName from "../RouteName";
 import HomeScreen from "../../screens/HomeScreen";
 import Setting from "../../screens/Setting";
+import TimeStart from "../../screens/TimeStart";
 
 const drawerComps = [
   {
@@ -12,7 +13,7 @@ const drawerComps = [
     id: RouteName.Setting,
     component: Setting,
     title: 'Setting'
-  }
+  }, 
 ]
 
 export { drawerComps }

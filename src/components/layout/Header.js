@@ -1,7 +1,19 @@
 import React from 'react';
-import { Drawler } from 'react-native';
-const Drawler = () => {
+import { Drawler, Image, Text, View } from 'react-native';
+import { goBack, toggleDrawer, navigationRef } from '../../navigation/NavigationServices';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Bars3Icon } from "react-native-heroicons/solid";
+
+const Headers = () => {
   return (
-    <Drawler /> 
+    <View className="w-full px-5">
+      <TouchableOpacity onPress={toggleDrawer}>
+          <View>
+            <Bars3Icon color="#471515" />
+          </View>
+        </TouchableOpacity>
+    </View>  
   )
 }
+
+export default Headers

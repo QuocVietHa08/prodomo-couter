@@ -122,7 +122,6 @@ export default function FocusSettingModal({
             <TouchableOpacity
               className="bg-[#471515] p-1 px-3 rounded"
               onPress={() => {
-                // setIsOpenModal(false);
                 onClose();
               }}
             >
