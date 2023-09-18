@@ -25,12 +25,14 @@ import {
   routeNameRef,
 } from "./NavigationServices";
 import AppNavigator from "./stack/AppNavigator";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 // import Root from "./DrawerNavigation";
 
 const Stack = createStackNavigator();
 
 export default function Navigation() {
   return (
+    <SafeAreaProvider>
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         initialRouteName={RouteName.Welcome}
@@ -41,5 +43,6 @@ export default function Navigation() {
         {AppNavigator()}
       </Stack.Navigator>
     </NavigationContainer>
+    </SafeAreaProvider>
   );
 }

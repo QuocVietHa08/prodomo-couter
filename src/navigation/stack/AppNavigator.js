@@ -12,6 +12,7 @@ import TimeStart from "../../screens/TimeStart";
 import RouteName from "../RouteName";
 import { drawerComps } from "./CustomDrawerContent.constant";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import CustomDrawerContent from "./CustomDrawerContent";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -21,15 +22,19 @@ const screenOptions = {
 };
 
 const AppDrawer = () => {
-  <Drawer.Navigator
-    // backBehavior="none"
-    initialRouteName={RouteName.Home}
-    screenOptions={{ headerShown: false }}
-  >
-    {drawerComps.map(({ id, component }) => (
-      <Drawer.Screen key={id} name={id} component={component} />
-    ))}
-  </Drawer.Navigator>;
+  console.log("drawer:", drawerComps);
+  return (
+    <Drawer.Navigator
+      // backBehavior="none"
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      initialRouteName={RouteName.Home}
+      screenOptions={{ headerShown: false }}
+    >
+      {drawerComps.map(({ id, component }) => (
+        <Drawer.Screen key={id} name={id} component={component} />
+      ))}
+    </Drawer.Navigator>
+  );
 };
 
 const AppNavigator = () => {

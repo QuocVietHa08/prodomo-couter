@@ -17,7 +17,7 @@ export default function Welcome() {
    setTimeout(() => ring1Padding.value = withSpring(ring1Padding.value + hp(3)), 100)  
    setTimeout(() => ring2Padding.value = withSpring(ring2Padding.value + hp(3)), 300)  
 
-   setTimeout(() => navigate(RouteName.Home), 2500)
+   setTimeout(() => navigate(RouteName.AppDrawer), 2500)
   }, [])
 
   return (
