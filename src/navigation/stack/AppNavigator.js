@@ -25,10 +25,21 @@ const AppDrawer = () => {
   console.log("drawer:", drawerComps);
   return (
     <Drawer.Navigator
-      // backBehavior="none"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       initialRouteName={RouteName.Home}
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: false,
+        drawerStyle: {
+          backgroundColor: "#FFF2F2",
+          width: 240,
+        },
+        drawerItemStyle: {
+          backgroundColor: "#FFF2F2",
+        },
+        drawerLabelStyle: {
+          color: "#471515",
+        },
+      }}
     >
       {drawerComps.map(({ id, component }) => (
         <Drawer.Screen key={id} name={id} component={component} />
