@@ -19,13 +19,25 @@ import RouteName from "../navigation/RouteName";
 import ButttonCancel from "../components/home/ButttonCancel";
 import { useSelector, useDispatch } from "react-redux";
 import { setStopCountDown, setTimeCountDown, setTimePurpose } from '../redux/home/homeReducer';
+import { MOTIVATION_QUOTATIONS } from '../utils/appConstants';
 
 export default function TimeStart() {
   const { timeCountDown, isCountDown, timePurpose } = useSelector(
     (state) => state.homeReducer
   );
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const [countDownQuote, setCountDownQuote] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCountDownQuote((prev) => {
+        if (prev < 4) return prev + 1 
+        return 0
+      }) 
+    }, 10000)
+  }, [countDownQuote])
 
   const handleSecondToMinuesAndSeconds = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -46,6 +58,7 @@ export default function TimeStart() {
   return (
     <View className="flex-1 bg-[#FFF2F2] flex-direction-column justify-evenly gap-30 items-center">
       <Text className="text-black text-3xl">Focus</Text>
+      <Text className="text-black">{MOTIVATION_QUOTATIONS[countDownQuote]}</Text>
 
       <View>
         <CountdownCircleTimer

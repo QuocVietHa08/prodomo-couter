@@ -70,7 +70,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView className="flex-1 bg-[#FFF2F2]">
       <Headers />
-      <View className="flex-1  flex-direction-column justify-evenly gap-30 items-center">
+      <View className="flex-1 flex-direction-column justify-evenly gap-30 items-center">
         <Text className="text-black text-3xl">Focus</Text>
 
         <View key={trigger}>
