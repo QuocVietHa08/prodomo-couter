@@ -46,7 +46,6 @@ function getCurrentRoute() {
 
 function toggleDrawer() {
   if (!navigationRef.isReady()) return;
-  console.log("hello")
   const actions = DrawerActions.toggleDrawer();
   navigationRef.dispatch(actions);
 }

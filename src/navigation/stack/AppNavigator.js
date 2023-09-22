@@ -2,30 +2,23 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from "@react-navigation/stack";
-
-import HomeScreen from "../../screens/HomeScreen";
-import Login from "../../screens/Login";
-import Setting from "../../screens/Setting";
-import Welcome from "../../screens/Welcome";
-import TimeEnd from "../../screens/TimeEnd";
-import TimeStart from "../../screens/TimeStart";
+import { Home, Welcome, TimeEnd, TimeStart, Setting  } from '../../screens/index';
 import RouteName from "../RouteName";
 import { drawerComps } from "./CustomDrawerContent.constant";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawerContent from "./CustomDrawerContent";
 
-const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const screenOptions = {
   headerShown: false,
 };
 
-const AppDrawer = () => {
-  console.log("drawer:", drawerComps);
+function AppDrawer() {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawerContent {...props} />}
+      backBehavior="none"
       initialRouteName={RouteName.Home}
       screenOptions={{
         headerShown: false,
@@ -48,6 +41,8 @@ const AppDrawer = () => {
   );
 };
 
+const Stack = createStackNavigator();
+
 const AppNavigator = () => {
   return (
     <>
@@ -58,7 +53,7 @@ const AppNavigator = () => {
       />
       <Stack.Screen
         name={RouteName.Home}
-        component={HomeScreen}
+        component={Home}
         options={screenOptions}
       />
       <Stack.Screen

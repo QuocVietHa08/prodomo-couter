@@ -5,4 +5,5 @@ export default {
   TimeEnd: 'TimeEnd',
   TimeStart: 'TimeStart',
   AppDrawer: 'AppDrawer',
+  Dashboard: 'Dashboard'
 }

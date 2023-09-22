@@ -1,10 +1,31 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React, { memo, useEffect, useState } from "react";
+import Headers from "../components/layout/Header";
+import {
+  View,
+  Text,
+  Button,
+  TouchableOpacity,
+  Pressable,
+  Modal,
+  StyleSheet,
+  SectionList,
+  Image,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Setting() {
+function Setting() {
+
   return (
-    <View>
-      <Text>Setting</Text>
-    </View>
-  )
+    <SafeAreaView className="flex-1 bg-[#FFF2F2]">
+      <Headers />
+      <View className="flex-1 flex-direction-column justify-evenly gap-30 items-center">
+        <Text className="text-black text-3xl">Setting</Text>
+
+
+        
+      </View>
+    </SafeAreaView>
+  );
 }
+
+export default memo(Setting)

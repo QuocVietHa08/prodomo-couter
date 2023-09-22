@@ -46,7 +46,7 @@ export default function TimeEnd() {
   };
   return (
     <SafeAreaView className="flex-1 justify-between bg-[#FFF2F2]">
-    <TouchableOpacity onPress={() => navigate(RouteName.Home)}><Text>Go back</Text></TouchableOpacity>
+      <Headers isReturn />
     <View className="d-flex h-[730] mt-5 items-center justify-center gap-[70px]">
       {timeRelaxing > 0 ? (
         <View className="flex items-center">
