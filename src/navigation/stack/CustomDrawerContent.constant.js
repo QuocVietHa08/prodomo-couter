@@ -1,12 +1,15 @@
 import RouteName from "../RouteName";
-import HomeScreen from "../../screens/HomeScreen";
-import Setting from "../../screens/Setting";
-import TimeStart from "../../screens/TimeStart";
+import { Home, Setting, Dashboard} from '../../screens'
 
 const drawerComps = [
+  // {
+  //   id: RouteName.Dashboard,
+  //   component: Dashboard,
+  //   title: 'Home'
+  // },
   {
     id: RouteName.Home,
-    component: HomeScreen,
+    component: Home,
     title: 'Home'
   },
   {

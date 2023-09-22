@@ -1,13 +1,13 @@
 import { View, Text, StatusBar, Image } from 'react-native'
 import React, { useEffect } from 'react'
-// import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { navigate } from '../navigation/NavigationServices';
+// import { navigate } from '../navigation/NavigationServices';
 import RouteName from '../navigation/RouteName';
 
 export default function Welcome() {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   const ring1Padding = useSharedValue(0);
   const ring2Padding = useSharedValue(0);
 
@@ -17,7 +17,7 @@ export default function Welcome() {
    setTimeout(() => ring1Padding.value = withSpring(ring1Padding.value + hp(3)), 100)  
    setTimeout(() => ring2Padding.value = withSpring(ring2Padding.value + hp(3)), 300)  
 
-   setTimeout(() => navigate(RouteName.TimeEnd), 2500)
+   setTimeout(() => navigation.navigate(RouteName.AppDrawer), 2500)
   }, [])
 
   return (
