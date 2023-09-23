@@ -12,11 +12,11 @@ const drawerComps = [
     component: Home,
     title: 'Home'
   },
-  {
-    id: RouteName.Setting,
-    component: Setting,
-    title: 'Setting'
-  }, 
+  // {
+  //   id: RouteName.Setting,
+  //   component: Setting,
+  //   title: 'Setting'
+  // }, 
 ]
 
 export { drawerComps }
