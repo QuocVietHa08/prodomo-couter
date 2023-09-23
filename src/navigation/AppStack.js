@@ -8,6 +8,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Home, Setting } from "../screens";
 import { drawerComps } from "./stack/CustomDrawerContent.constant";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createStackNavigator();
 
