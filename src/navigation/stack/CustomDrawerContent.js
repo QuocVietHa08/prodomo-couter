@@ -8,14 +8,28 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer";
 import ModalSetting from "../../components/setting/ModalSetting";
+import ModalDashboard from "../../components/dashboard/ModalDashboard";
 import { toggleDrawer } from '../NavigationServices';
 
 function CustomDrawerContent(props) {
   const [isOpenModalSetting, setIsOpenModalSetting] = React.useState(false);
+  const [isOpenModalDashboard, setIsOpenModalDashboard] = React.useState(false);
 
   return (
     <DrawerContentScrollView {...props}>
       <ModalSetting open={isOpenModalSetting} setOpen={setIsOpenModalSetting} />
+      <ModalDashboard open={isOpenModalDashboard} setOpen={setIsOpenModalDashboard} />
+      <DrawerItem
+        label="Dashboard"
+        labelStyle={{
+          color: '#471515'
+        }} 
+        onPress={() => {
+          setIsOpenModalDashboard(true);
+          toggleDrawer();
+        }}
+      ></DrawerItem>
+
       <DrawerItemList {...props} />
       <DrawerItem
         label="Setting"
@@ -27,6 +41,8 @@ function CustomDrawerContent(props) {
           toggleDrawer();
         }}
       ></DrawerItem>
+
+
     </DrawerContentScrollView>
   );
 }
