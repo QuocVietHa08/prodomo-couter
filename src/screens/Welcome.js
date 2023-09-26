@@ -22,7 +22,6 @@ export default function Welcome() {
 
   return (
     <View className="flex-1 justify-center items-center space-y-10 bg-[#FFF2F2]">
-      <StatusBar style="light" />
       <Animated.View className="bg-red-500/20 rounded-full" style={{ padding: ring1Padding}}>
         <Animated.View className="bg-red-500/20 rounded-full" style={{ padding: ring2Padding}}>
           <Image
