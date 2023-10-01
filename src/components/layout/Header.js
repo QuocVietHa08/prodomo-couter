@@ -16,10 +16,11 @@ import {
   FireIcon,
 } from "react-native-heroicons/solid";
 import RouteName from "../../navigation/RouteName";
+import ModalSettingHeader from "./ModalSettingHeader";
 
-const ClockAndFireIcon = () => {
+const ClockAndFireIcon = ({ onPress }) => {
   return (
-    <TouchableOpacity className="border p-1 rounded-3xl bg-white" onPress={() => console.log("hello")}>
+    <TouchableOpacity className="border p-1 rounded-3xl bg-white" onPress={onPress}>
       <View className="flex flex-row items-center gap-x-2">
         <ClockIcon color="#471515" />
         <Text>|</Text>
@@ -31,6 +32,8 @@ const ClockAndFireIcon = () => {
 
 const Headers = ({ isReturn = false }) => {
   const [isPodcastSound, setIsPodcastSound] = useState(false);
+  const [isOpenModalSetting, setIsOpenModalSetting] = useState(false);
+
   if (isReturn) {
     return (
       <View className="w-full px-5">
@@ -41,6 +44,8 @@ const Headers = ({ isReturn = false }) => {
     );
   }
 
+
+
   return (
     <View className="w-full px-5 flex flex-row items-center justify-between">
       <TouchableOpacity onPress={toggleDrawer}>
@@ -49,7 +54,7 @@ const Headers = ({ isReturn = false }) => {
         </View>
       </TouchableOpacity>
       <View>
-        <ClockAndFireIcon />
+        <ClockAndFireIcon onPress={() => setIsOpenModalSetting(true)} />
       </View>
       <View>
         <TouchableOpacity onPress={() => setIsPodcastSound((prev) => !prev)}>
@@ -59,7 +64,8 @@ const Headers = ({ isReturn = false }) => {
             <SpeakerXMarkIcon color="#471515" />
           )}
         </TouchableOpacity>
-      </View>
+      </View>   
+      <ModalSettingHeader open={isOpenModalSetting} setOpen={setIsOpenModalSetting} />
     </View>
   );
 };
